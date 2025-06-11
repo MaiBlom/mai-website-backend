@@ -18,10 +18,11 @@ DotEnv.Load(dotenv);
 
 // Get connection to MySQL DB
 builder.Services.AddDbContext<ApplicationDBContext>(options => {
-    var connectionString = "server=" + Environment.GetEnvironmentVariable("server") + ";"
-                            + "database=" + Environment.GetEnvironmentVariable("database_name") + ";"
+    var connectionString = "Server=" + Environment.GetEnvironmentVariable("db_host") + ";"
+                            + "Database=" + Environment.GetEnvironmentVariable("db_name") + ";"
                             + "User=" + Environment.GetEnvironmentVariable("db_username") + ";"
-                            + "Password=" + Environment.GetEnvironmentVariable("db_password") + ";";
+                            + "Password=" + Environment.GetEnvironmentVariable("db_password") + ";"
+                            + "Port=" + Environment.GetEnvironmentVariable("db_port") + ";";
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
